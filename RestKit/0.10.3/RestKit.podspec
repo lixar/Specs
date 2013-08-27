@@ -12,6 +12,14 @@ Pod::Spec.new do |s|
   ### Preferred dependencies
 
   s.preferred_dependency = 'JSON'
+  s.prefix_header_contents = '
+  #if defined(COCOAPODS)
+    #if defined(__cplusplus)
+      #define FILEMD5HASH_EXTERN extern "C"
+    #else
+      #define FILEMD5HASH_EXTERN extern
+    #endif
+  #endif'
 
   s.subspec 'JSON' do |js|
     js.dependency 'RestKit/Network'
